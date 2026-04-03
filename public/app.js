@@ -66,16 +66,22 @@ function renderTasks() {
     return;
   }
 
+  const statusIcons = {
+    pending: '⏳',
+    'in-progress': '🔄',
+    completed: '✅',
+  };
+
   tasksList.innerHTML = tasks
     .map(task => `
       <article class="task-card">
         <div class="task-title">${escapeHtml(task.title)}</div>
         ${task.description ? `<p class="task-desc">${escapeHtml(task.description)}</p>` : ''}
         <div class="status-row">
-          <span>${task.status.replace('-', ' ')}</span>
+          <span class="status-${task.status}">${statusIcons[task.status] || '❓'} ${task.status.replace('-', ' ')}</span>
           <div class="task-actions">
-            <button class="action-btn status" onclick="updateStatus('${task.id}', '${task.status}')">${task.status === 'completed' ? 'Reset' : 'Next'}</button>
-            <button class="action-btn delete" onclick="deleteTask('${task.id}')">Delete</button>
+            <button class="action-btn status" onclick="updateStatus('${task.id}', '${task.status}')">${task.status === 'completed' ? '🔄 Reset' : '➡️ Next'}</button>
+            <button class="action-btn delete" onclick="deleteTask('${task.id}')">🗑️ Delete</button>
           </div>
         </div>
       </article>
