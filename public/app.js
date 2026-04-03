@@ -62,15 +62,9 @@ function renderTasks() {
   taskCount.textContent = `${tasks.length} task${tasks.length !== 1 ? 's' : ''}`;
 
   if (tasks.length === 0) {
-    tasksList.innerHTML = '<div class="empty-state">No tasks yet. Add one above.</div>';
+    tasksList.innerHTML = '<div class="empty-state">No tasks yet. Add your first project task.</div>';
     return;
   }
-
-  const statusIcons = {
-    pending: '⏳',
-    'in-progress': '🔄',
-    completed: '✅',
-  };
 
   tasksList.innerHTML = tasks
     .map(task => `
@@ -78,10 +72,10 @@ function renderTasks() {
         <div class="task-title">${escapeHtml(task.title)}</div>
         ${task.description ? `<p class="task-desc">${escapeHtml(task.description)}</p>` : ''}
         <div class="status-row">
-          <span class="status-${task.status}">${statusIcons[task.status] || '❓'} ${task.status.replace('-', ' ')}</span>
+          <span class="status-${task.status}">${task.status.replace('-', ' ')}</span>
           <div class="task-actions">
-            <button class="action-btn status" onclick="updateStatus('${task.id}', '${task.status}')">${task.status === 'completed' ? '🔄 Reset' : '➡️ Next'}</button>
-            <button class="action-btn delete" onclick="deleteTask('${task.id}')">🗑️ Delete</button>
+            <button class="action-btn status" onclick="updateStatus('${task.id}', '${task.status}')">${task.status === 'completed' ? 'Reset' : 'Next'}</button>
+            <button class="action-btn delete" onclick="deleteTask('${task.id}')">Delete</button>
           </div>
         </div>
       </article>

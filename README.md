@@ -1,6 +1,6 @@
-# Task Manager
+# Project Tracker
 
-A professional task management web application built with Node.js, Express, and PostgreSQL. This project is prepared for Railway PaaS deployment and includes full CRUD, secure environment management, and a styled UX.
+A professional project task management web application built with Node.js, Express, and PostgreSQL. This project is prepared for Railway PaaS deployment and includes full CRUD, secure environment management, and a clean UX.
 
 ## Assignment: Practical Application of PaaS with Railway
 
