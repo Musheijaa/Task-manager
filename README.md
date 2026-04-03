@@ -1,6 +1,23 @@
 # Task Manager
 
-A professional task management web application built with Node.js, Express, and PostgreSQL.
+A professional task management web application built with Node.js, Express, and PostgreSQL. This project is prepared for Railway PaaS deployment and includes full CRUD, secure environment management, and a styled UX.
+
+## Assignment: Practical Application of PaaS with Railway
+
+### Deliverables included in this repo
+- Deployed app URL: *(add your Railway URL after deployment)*
+- Source code repo: *(your GitHub link)*
+- Database schema + sample data: `schema.sql` + seed example in docs
+- Documentation report: `RAILWAY_REPORT.md` (2–3 pages reflect deployment, challenges, comparison)
+
+### Learning objective mapping
+1. Application deployment on Railway: `index.js`, `Procfile`, Railway config
+2. Environment configuration: `.env.example`, secure `DATABASE_URL` usage
+3. Database integration: `schema.sql`, PostgreSQL methods in backend
+4. Scalability awareness: section below
+5. CI/CD workflow: Railway GitHub integration recommended
+6. Monitoring/logging: Railway logs (see `RAILWAY_REPORT.md`)
+7. Documentation/reflection: this README + report file
 
 ## Features
 

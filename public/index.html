@@ -10,12 +10,17 @@
   <div class="container">
     <header>
       <h1>Task Manager</h1>
-      <p class="subtitle">Stay organized and productive</p>
+      <p class="subtitle">Modern productivity dashboard</p>
+      <div class="meta-bar">
+        <span id="appStatus" class="status-pill">Offline</span>
+        <span id="taskStats" class="stats-pill">Total: 0 | Pending: 0 | In-progress: 0 | Completed: 0</span>
+      </div>
     </header>
 
     <section class="add-task-section">
-      <form id="taskForm">
-        <div class="form-group">
+      <h2>Create New Task</h2>
+      <form id="taskForm" class="task-form">
+        <div class="row">
           <input
             type="text"
             id="taskTitle"
@@ -23,17 +28,36 @@
             required
             class="input-field"
           >
+          <select id="taskStatus" class="input-field input-select" aria-label="Status">
+            <option value="pending" selected>Pending</option>
+            <option value="in-progress">In progress</option>
+            <option value="completed">Completed</option>
+          </select>
         </div>
-        <div class="form-group">
-          <textarea
-            id="taskDescription"
-            placeholder="Description (optional)"
-            rows="3"
-            class="input-field"
-          ></textarea>
+        <textarea
+          id="taskDescription"
+          placeholder="Description (optional)"
+          rows="3"
+          class="input-field"
+        ></textarea>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Add Task</button>
+          <button id="clearFilter" type="button" class="btn btn-secondary">Reset Filters</button>
         </div>
-        <button type="submit" class="btn btn-primary">Add Task</button>
       </form>
+    </section>
+
+    <section class="controls-section">
+      <div class="filter-row">
+        <input id="searchInput" type="search" placeholder="Search tasks" class="input-field" />
+        <select id="statusFilter" class="input-field input-select">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="in-progress">In progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
+      </div>
     </section>
 
     <section class="tasks-section">
