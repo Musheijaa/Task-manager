@@ -58,6 +58,24 @@ async function deleteTask(id) {
   await fetchTasks();
 }
 
+async function editTask(id) {
+  const task = tasks.find(t => t.id === id);
+  if (!task) return;
+
+  const newTitle = prompt('Edit task title', task.title);
+  if (newTitle === null) return;
+
+  const newDescription = prompt('Edit task description', task.description || '');
+  if (newDescription === null) return;
+
+  await fetch(`${API_BASE_URL}/tasks/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: newTitle.trim(), description: newDescription.trim() }),
+  });
+  await fetchTasks();
+}
+
 function renderTasks() {
   taskCount.textContent = `${tasks.length} task${tasks.length !== 1 ? 's' : ''}`;
 
@@ -74,8 +92,9 @@ function renderTasks() {
         <div class="status-row">
           <span class="status-${task.status}">${task.status.replace('-', ' ')}</span>
           <div class="task-actions">
-            <button class="action-btn status" onclick="updateStatus('${task.id}', '${task.status}')">${task.status === 'completed' ? 'Reset' : 'Next'}</button>
-            <button class="action-btn delete" onclick="deleteTask('${task.id}')">Delete</button>
+            <button class="action-btn status" onclick="updateStatus('${task.id}', '${task.status}')">${task.status === 'completed' ? '↻ Reset' : '→ Next'}</button>
+            <button class="action-btn edit" onclick="editTask('${task.id}')">✏️ Edit</button>
+            <button class="action-btn delete" onclick="deleteTask('${task.id}')">🗑️ Delete</button>
           </div>
         </div>
       </article>
