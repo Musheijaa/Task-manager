@@ -7,69 +7,29 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header>
+  <main class="container">
+    <header class="hero">
       <h1>Task Manager</h1>
-      <p class="subtitle">Modern productivity dashboard</p>
-      <div class="meta-bar">
-        <span id="appStatus" class="status-pill">Offline</span>
-        <span id="taskStats" class="stats-pill">Total: 0 | Pending: 0 | In-progress: 0 | Completed: 0</span>
-      </div>
+      <p class="subtitle">Simple, clean, focused task list</p>
     </header>
 
-    <section class="add-task-section">
-      <h2>Create New Task</h2>
-      <form id="taskForm" class="task-form">
-        <div class="row">
-          <input
-            type="text"
-            id="taskTitle"
-            placeholder="Task title"
-            required
-            class="input-field"
-          >
-          <select id="taskStatus" class="input-field input-select" aria-label="Status">
-            <option value="pending" selected>Pending</option>
-            <option value="in-progress">In progress</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
-        <textarea
-          id="taskDescription"
-          placeholder="Description (optional)"
-          rows="3"
-          class="input-field"
-        ></textarea>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Add Task</button>
-          <button id="clearFilter" type="button" class="btn btn-secondary">Reset Filters</button>
-        </div>
-      </form>
-    </section>
+    <form id="taskForm" class="task-form">
+      <input id="taskTitle" type="text" placeholder="Task title" required class="input-field" />
+      <textarea id="taskDescription" rows="3" placeholder="Description (optional)" class="input-field"></textarea>
+      <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
 
-    <section class="controls-section">
-      <div class="filter-row">
-        <input id="searchInput" type="search" placeholder="Search tasks" class="input-field" />
-        <select id="statusFilter" class="input-field input-select">
-          <option value="all">All</option>
-          <option value="pending">Pending</option>
-          <option value="in-progress">In progress</option>
-          <option value="completed">Completed</option>
-        </select>
-        <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
-      </div>
-    </section>
+    <div class="status-row">
+      <span id="taskCount">0 tasks</span>
+      <span id="appStatus">Offline</span>
+    </div>
 
-    <section class="tasks-section">
-      <div class="section-header">
-        <h2>Your Tasks</h2>
-        <div id="taskCount" class="task-count">0 tasks</div>
-      </div>
-      <div id="tasksList" class="tasks-list">
-        <div class="loading">Loading tasks...</div>
+    <section id="tasksList" class="tasks-list">
+      <div class="empty-state">
+        <p>Start adding tasks to build your list.</p>
       </div>
     </section>
-  </div>
+  </main>
 
   <script src="app.js"></script>
 </body>
